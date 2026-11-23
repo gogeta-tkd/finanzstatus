@@ -1,0 +1,207 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Finanzstatus</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<meta name="theme-color" content="#262a31">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Finanzen">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{--bg:#262a31;--card:#30353d;--tx:#eceff4;--mu:#9aa3b0;--ln:#3d434d;--ac:#4c9aff;--ok:#3ddc84;--no:#ff6b6b;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{background:var(--bg)}
+
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:12px 12px 84px}nav{gap:4px}nav button{min-width:0;flex:1 1 auto;padding-left:6px;padding-right:6px;font-size:14px;white-space:nowrap}.jm{scroll-margin-top:calc(var(--nh,60px) + 56px)}
+h1{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:8px 0}h3{margin:0 0 6px}
+nav{display:flex;gap:6px;position:sticky;top:0;z-index:30;background:var(--bg);padding:8px 0}.ys{position:sticky;top:var(--nh,60px);z-index:25;background:var(--bg);padding:6px 0;margin:0 0 4px}nav button{flex:1;padding:11px;border:0;border-radius:999px;background:var(--card);color:var(--tx);font:inherit}
+nav button.on{background:var(--ac);color:#fff}
+nav{gap:4px}nav button{min-width:0;flex:1 1 auto;padding:11px 5px;font-size:13px;white-space:nowrap}
+.card{background:var(--card);border-radius:16px;padding:14px;margin:12px 0;border:1px solid rgba(255,255,255,.05);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.k{display:grid;grid-template-columns:1fr 1fr;gap:8px}.k div{background:var(--bg);border-radius:10px;padding:8px}
+.k small,.mu{color:var(--mu)}.k b{display:block;font-size:18px}
+.ok{color:var(--ok)}.no{color:var(--no)}
+input,select{width:100%;min-width:0;box-sizing:border-box;padding:8px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.r{display:grid;grid-template-columns:1fr 96px 34px;gap:6px;margin:4px 0}
+.r2{display:grid;grid-template-columns:1fr 110px;gap:6px;margin:4px 0;align-items:center}.r2c{grid-template-columns:minmax(0,.9fr) minmax(0,1fr) 104px}.r2c .cm{font-size:13px}.pk{color:#ff8fc7;font-weight:600}
+.r2c{align-items:end;grid-template-columns:minmax(52px,.7fr) minmax(0,1.1fr) 104px}.r2c>span{align-self:end;padding-bottom:9px;overflow-wrap:anywhere}.r2c input{height:38px;min-width:0;box-sizing:border-box}.r2c input[type=date]{-webkit-appearance:none;appearance:none;width:100%;max-width:100%;text-align:center;padding:4px 6px;font-size:13px}.r2c>div{min-width:0}
+.r button,.add,.pri,.lnk{border:0;border-radius:8px;background:var(--bg);color:var(--ac);font:inherit;padding:8px}
+.pri{width:100%;background:var(--ac);color:#fff;padding:12px;margin:8px 0}
+.add{width:100%;margin-top:4px}.lnk{background:none}
+.sc{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px;white-space:nowrap}
+th,td{padding:8px 6px;text-align:right;border-bottom:1px solid var(--ln)}td:first-child,th:first-child{text-align:left}
+tr.c{cursor:pointer}tr.cur td{font-weight:600}
+summary,.sum{display:flex;justify-content:space-between;padding:6px 0;cursor:pointer}.sum{cursor:default;border-top:1px solid var(--ln)}
+.nav2{display:grid;grid-template-columns:44px 1fr 44px;gap:6px}
+.wa{color:#ffa94d}.ex{border-bottom:1px solid var(--ln);padding:6px 0}.pd{opacity:.55}.cb{display:flex;align-items:center;gap:6px;white-space:nowrap}input[type=checkbox]{width:22px;height:22px;padding:0}
+.ex{display:grid;grid-template-columns:minmax(0,1fr) 78px 98px 22px 24px;gap:4px;align-items:center;padding:4px 0}.ex input:not([type=checkbox]),.ex select{padding:8px 4px}.ex button{border:0;background:none;color:var(--ac);font:inherit;padding:0}.eh{font-size:12px;color:var(--mu)}.tq{color:#2dd4cf}
+.jm.cur{outline:2px solid var(--ac);background:color-mix(in srgb,var(--ac) 11%,var(--card))}.gd{width:auto!important;padding:1px 6px;font-size:12px;border-radius:6px}.gb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:0 0 10px;padding:8px;border-radius:10px;background:rgba(0,0,0,.18)}.gb small{display:block;font-size:11px;margin-bottom:2px}.gb input{padding:4px 6px;font-size:14px;text-align:right}.gb b{display:block;padding:4px 0;font-size:15px;text-align:right}.jh{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;cursor:pointer}.jh span{font-weight:700;font-size:17px;flex:1}.jg{display:grid;grid-template-columns:1fr 1fr;gap:10px}.jr{display:flex;justify-content:space-between;gap:6px;font-size:13px;padding:4px 0;border-bottom:1px solid var(--ln)}.jr span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.jr b{font-weight:600;white-space:nowrap}.jt{font-weight:700;text-align:center;border-radius:8px;padding:6px;margin-bottom:4px;color:#10151c}.jtr{background:#ff8a8a}.jtt{background:#2dd4cf}.jy{background:#ffe066;color:#10151c;border-radius:6px;padding:4px 6px;border-bottom:0;margin-bottom:2px}.jy b{color:#10151c}
+.yb{flex:1;padding:10px;border:0;border-radius:999px;background:var(--card);color:var(--tx);font:inherit}.yb.on{background:var(--ac);color:#fff}
+.jr input{padding:2px 5px;font-size:13px;border-radius:6px}.jr .jn{flex:1}.jr .ja{width:64px;flex:none;text-align:right}.fab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:20;border:0;border-radius:999px;padding:13px 22px;font:inherit;font-weight:600;background:var(--card);color:var(--tx);box-shadow:0 4px 16px rgba(0,0,0,.45)}.fab.on{background:var(--ac);color:#fff}
+.jx{border:0;background:none;color:var(--mu);font:inherit;font-size:13px;padding:0 2px;flex:none;cursor:pointer}.jr .jx{font-size:17px}.gp{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.k .gp small{font-size:12px}
+</style></head><body><main>
+<h1>Finanzstatus</h1><div id="st" class="mu" style="font-size:13px;margin:-2px 0 8px">Verbinde …</div><div style="font-size:12px;margin:-4px 0 8px" class="mu"><a href="#" id="pw" style="color:inherit">Passwort ändern</a> · <a href="#" id="lo" style="color:inherit">Abmelden</a></div><div id="bn"></div><nav id="n"></nav><div id="v"></div><div id="lg" hidden style="position:fixed;inset:0;z-index:99;background:var(--bg);display:none;align-items:center;justify-content:center;padding:24px"><form id="lf" style="width:100%;max-width:340px;display:grid;gap:12px"><div style="font-size:44px;text-align:center">💶</div><h1 style="text-align:center;margin:0">Finanzstatus</h1><input id="le" type="email" autocomplete="username" placeholder="E-Mail" required style="font:16px inherit;padding:12px;border-radius:10px;border:1px solid var(--ln);background:var(--card);color:var(--tx)"><input id="lp" type="password" autocomplete="current-password" placeholder="Passwort" required style="font:16px inherit;padding:12px;border-radius:10px;border:1px solid var(--ln);background:var(--card);color:var(--tx)"><button class="pri" type="submit" style="padding:12px;font-size:16px">Anmelden</button><div id="lm" class="mu" style="text-align:center;font-size:13px;min-height:18px"></div></form></div>
+
+<p class="mu" style="font-size:13px">Änderungen werden online gespeichert und auf allen Geräten übernommen. <button class="lnk" onclick="rs()">Zurücksetzen</button> <button class="lnk" onclick="ex()">Daten exportieren</button></p>
+</main>
+<script>
+const MN=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+const AC=["Manuel Comdirect","Sandra ING Diba","Sandra Comdirect","ETF Sparer","Aktien","XRP"];
+const DEF=(()=>{const e=()=>({n:'',g:[],f:[],v:[],s:[]});return{cur:0,tab:'m',giro:[0,0],inc:[0,0,0,0,0,0],base:{M:Object.assign(e(),{n:'Manuel'}),S:Object.assign(e(),{n:'Sandra'})},a:Array.from({length:60},()=>[0,0,0,0,0,0]),m:Array.from({length:60},(_,k)=>({s:k?null:0,i:[],e:[]})),rb:{g:1500,a:650},rbv:1,ac:{},y0:2023}})();
+const HAD=(()=>{try{return localStorage.getItem('fin26')!==null}catch(e){return false}})();let DY=(()=>{try{const d=localStorage.getItem('fin26d');return d===null?HAD:d==='1'}catch(e){return false}})();
+let S;try{S=JSON.parse(localStorage.getItem('fin26'))}catch(e){}
+if(!S||!S.m)S=JSON.parse(JSON.stringify(DEF));
+if(!S.inc)S.inc=[100,150,0,650,0,0];
+var M27=[];
+var Y0=2023;var HIST=[];var HA=[];
+var JE=false;var MIG;function cmo(){const d=new Date();return (d.getFullYear()-Y0)*12+d.getMonth()}
+function migY(o){if(o.y0)return o;o.m=JSON.parse(JSON.stringify(HIST)).concat(o.m);o.a=JSON.parse(JSON.stringify(HA)).concat(o.a);const ac={};Object.keys(o.ac||{}).forEach(q=>{const t=q.split('-');ac[(+t[0]+36)+'-'+t[1]]=o.ac[q]});o.ac=ac;o.y0=Y0;MIG=true;return o}
+const mj=j=>JSON.stringify(migY(JSON.parse(j)));
+function nz(){migY(S);if(!S.gd)S.gd=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);if(!S.ac)S.ac={};Object.keys(S.ac).forEach(q=>{if(+q.split('-')[1]>=4&&!/^\d{4}-\d\d-\d\d$/.test(S.ac[q]))delete S.ac[q]});if(!S.rb)S.rb={g:1500,a:650};S.m.forEach((m,k)=>{m.e.forEach(x=>{if(x[2]===undefined){x[2]='b';x[3]=k<9?1:0}});m.e.sort((a,b)=>(a[3]?1:0)-(b[3]?1:0))});if(!S.rbv){S.rbv=1;MIG=true;const cm=cmo();S.m.forEach((m,k)=>{if(k>cm){const e=m.i.find(x=>x[0]=='Manuel'&&x[2]!='r');if(e)e[1]=S.rb.g;else m.i.unshift(['Manuel',S.rb.g])}})}while(S.m.length<60){const mm=JSON.parse(JSON.stringify(M27[S.m.length-48]));mm.i.forEach(x=>{if(x[0]=='Manuel')x[1]=S.rb.g});S.m.push(mm);MIG=true}while(S.a.length<60){const p=S.a[S.a.length-1];S.a.push(p.map((v,i)=>v+(S.inc[i]||0)))}}nz();
+S.cur=Math.max(0,Math.min(S.m.length-1,cmo()));delete S.yr;
+const $=s=>document.querySelector(s),sl=()=>{try{localStorage.setItem('fin26',JSON.stringify(S))}catch(e){}},sv=()=>{sl();dirty(1);sched()};
+const fm=n=>(+n).toLocaleString('de-DE',{style:'currency',currency:'EUR',minimumFractionDigits:Number.isInteger(+n)?0:2,maximumFractionDigits:2});
+const sm=l=>l.reduce((t,x)=>t+(+x[1]||0),0),es=s=>String(s).replace(/"/g,'&quot;').replace(/</g,'&lt;'),cl=n=>n<0?'no':'ok';
+function calc(){let c=0;return S.m.map((m,k)=>{const st=m.s!=null&&m.s!==''?+m.s:c,ei=sm(m.i),au=sm(m.e),rest=st+ei-au,a=S.a[k],sp=a[0]+a[1]+a[2]+a[3],bo=a[4]+a[5],o={st,ei,au,rest,uc:c,sp,bo,ges:rest+sp+bo};c=rest;return o})}
+function bs(p){const b=S.base[p],g=sm(b.g),f=sm(b.f),v=sm(b.v),s=sm(b.s);return{g,f,v,s,ue:g-f-v,mu:g-f-v-s}}
+function mlab(k){return MN[k%12]+' '+(Y0+Math.floor(k/12))}
+function YR(){return S.yr!=null?S.yr:Math.floor(S.cur/12)}
+function ysel(){const y=YR();return `<div class=ys style='display:flex;gap:6px'>`+[0,1,2,3,4].map(i=>`<button class='yb${i==y?' on':''}' onclick='yb(${i})'>${Y0+i}</button>`).join('')+`</div>`}
+function vU(){const ra=calc(),y=YR(),r=ra.slice(y*12,y*12+12),T=r.reduce((t,x)=>[t[0]+x.ei,t[1]+x.au],[0,0]),e=r[11];
+return ysel()+`<div class=card><b>Verfügbar auf dem Girokonto</b> <span class=mu>(Basis)</span><div class=r2><span>Manu</span><input type=number value="${S.giro[0]}" onchange="gi(0,this.value)"></div><div class=r2><span>Sandra</span><input type=number value="${S.giro[1]}" onchange="gi(1,this.value)"></div><div class=sum><span>Gesamt</span><b>${fm(S.giro[0]+S.giro[1])}</b></div></div>
+<div class=card><div class=k><div><small>Ende ${mlab(S.cur)} flüssig</small><b class="${cl(ra[S.cur].rest)}">${fm(ra[S.cur].rest)}</b></div><div><small>Alles zusammen (Ende ${Y0+y})</small><b>${fm(e.ges)}</b></div><div><small>Einnahmen ${Y0+y}</small><b>${fm(T[0])}</b></div><div><small>Ausgaben ${Y0+y}</small><b>${fm(T[1])}</b></div></div></div>
+<div class="card sc"><table><tr><th>Monat<th>Start<th>Einnahmen<th>Ausgaben<th>Rest<th>Sparer<th>Börse<th>Gesamt</tr>`+r.map((x,i)=>{const k=y*12+i;return `<tr class="c${k==S.cur?' cur':''}" onclick="go('m',${k})"><td>${MN[i]}<td>${fm(x.st)}<td>${fm(x.ei)}<td>${fm(x.au)}<td class="${cl(x.rest)}">${fm(x.rest)}<td>${fm(x.sp)}<td>${fm(x.bo)}<td>${fm(x.ges)}</tr>`}).join('')+`</table></div>`}
+function rbrow(k){const h=S.m[k].i.some(x=>x[2]=='r');return `<label class=cb style='margin:2px 0 8px'><input type=checkbox ${h?'checked':''} onchange="rbt(${k},this.checked)"> Rufbereitschaft (+${fm(S.rb.a)})</label>`}
+function ls(t,k,l){return l.map((x,j)=>x[2]=='r'?`<div class=r><input value="${es(x[0])}" readonly><input value="${x[1]}" readonly><span></span></div>`:`<div class=r><input value="${es(x[0])}" onchange="ed('${t}',${k},${j},0,this.value)"><input type=number step=any inputmode=decimal value="${x[1]}" oninput="lv('${t}',${k},${j},this.value)" onchange="ed('${t}',${k},${j},1,this.value)"><button onclick="rm('${t}',${k},${j})">×</button></div>`).join('')+`<button class=add onclick="ad('${t}',${k})">+ Eintrag</button>`}
+function ac(k,f,t){return AC.slice(f,t).map((n,i)=>{const j=f+i,c=(S.ac||{})[k+'-'+j]||'';return `<div class="r2 r2c"><span>${n}</span>${j>=4?`<div><small class=mu style='display:block;font-size:11px'>zuletzt geprüft</small><input type=date class=cm value="${c}" onchange="sgd(${k},${j},this.value)"></div>`:`<input class=cm placeholder="Kommentar" value="${es(c)}" onchange="sac(${k},${j},this.value)">`}<input type=number class="${c&&j<4?'pk':''}" value="${S.a[k][j]}" onchange="sa(${k},${j},this.value)"></div>`}).join('')}
+function sgd(k,j,v){if(!S.ac)S.ac={};for(let m=k;m<S.a.length;m++){const key=m+'-'+j;if(v)S.ac[key]=v;else delete S.ac[key]}sv();R()}
+function sac(k,j,v){if(!S.ac)S.ac={};const key=k+'-'+j;if(v.trim())S.ac[key]=v.trim();else delete S.ac[key];sv();R()}
+function gk(){return`<div class=card><b>Verfügbar auf dem Girokonto</b><div class=r2><span>Manu</span><input type=number value="${S.giro[0]}" onchange="gi(0,this.value)"></div><div class=r2><span>Sandra</span><input type=number value="${S.giro[1]}" onchange="gi(1,this.value)"></div><div class=sum><span>Gesamt</span><b id=ggs>${fm(S.giro[0]+S.giro[1])}</b></div><div id=gko>${gkh(S.cur)}</div></div>`}
+function gpt(k){const g=S.giro[0]+S.giro[1];let o=0;S.m[k].e.forEach(x=>{if(!x[3])o+=+x[1]||0});const d=g-o-calc()[k].rest;return`Gap ${d>0?'+':''}${fm(d)}`}
+function lx(k,l){return`<div class="ex eh"><span>Text</span><span>Betrag</span><span>Status</span><span>✓</span><span></span></div>`+l.map((x,j)=>`<div class="ex${x[3]?' pd':''}"><input value="${es(x[0])}" onchange="ed('e',${k},${j},0,this.value)"><input class="${x[2]=='g'?'wa':'ok'}" type=number step=any inputmode=decimal value="${x[1]}" oninput="lv('e',${k},${j},this.value)" onchange="ed('e',${k},${j},1,this.value)"><select onchange="sx(${k},${j},2,this.value)"><option value=b ${x[2]=='g'?'':'selected'}>bekannt</option><option value=g ${x[2]=='g'?'selected':''}>geschätzt</option></select><input type=checkbox ${x[3]?'checked':''} onchange="sx(${k},${j},3,this.checked?1:0)"><button onclick="rm('e',${k},${j})">×</button></div>`).join('')+`<button class=add onclick="ad('e',${k})">+ Eintrag</button>`}
+function gkh(k){const g=S.giro[0]+S.giro[1];let ob=0,og=0;S.m[k].e.forEach(x=>{if(!x[3]){const v=+x[1]||0;if(x[2]=='g')og+=v;else ob+=v}});return`<div class=sum><span>Offen bekannt</span><b class=ok>${fm(ob)}</b></div><div class=sum><span>Offen geschätzt</span><b class=wa>${fm(og)}</b></div><div class=sum><span>Bleibt übrig</span><b class=tq>${fm(g-ob-og)}</b></div>`}
+function fkh(k){const g=S.giro[0]+S.giro[1];let bz=0,ob=0,og=0;S.m[k].e.forEach(x=>{const v=+x[1]||0;if(x[3])bz+=v;else if(x[2]=='g')og+=v;else ob+=v});const op=ob+og,fc=g-bz;
+return`<div class=k><div><small>Forecast (Konto − bezahlt)</small><b class="${cl(fc)}">${fm(fc)}</b></div><div><small>Noch offen</small><b>${fm(op)}</b></div><div><small>Bezahlt</small><b>${fm(bz)}</b></div><div><small>Nach allen offenen</small><b class="${cl(fc-op)}">${fm(fc-op)}</b></div></div><p class=mu style="margin:8px 0 0;font-size:13px">Offen: <span class=ok>${fm(ob)} bekannt</span> · <span class=wa>${fm(og)} geschätzt</span></p>`}
+function le(k,l){return l.map((x,j)=>`<div class="ex${x[3]?' pd':''}"><div class=r style="grid-template-columns:1fr auto 34px"><input value="${es(x[0])}" onchange="ed('e',${k},${j},0,this.value)"><label class=cb><input type=checkbox ${x[3]?'checked':''} onchange="sx(${k},${j},3,this.checked?1:0)">bezahlt</label><button onclick="rm('e',${k},${j})">×</button></div><div class=r style="grid-template-columns:100px 1fr"><input class="${x[2]=='g'?'wa':'ok'}" type=number step=any inputmode=decimal value="${x[1]}" oninput="lv('e',${k},${j},this.value)" onchange="ed('e',${k},${j},1,this.value)"><select onchange="sx(${k},${j},2,this.value)"><option value=b ${x[2]=='g'?'':'selected'}>Betrag bekannt</option><option value=g ${x[2]=='g'?'selected':''}>geschätzt</option></select></div></div>`).join('')+`<button class=add onclick="ad('e',${k})">+ Eintrag</button>`}
+function vM(){const k=S.cur,r=calc()[k],m=S.m[k],a=S.a[k];
+return gk()+`<div class="nav2" style="margin-top:12px"><button class=pri style="margin:0" onclick="go('m',${Math.max(0,k-1)})">‹</button><select onchange="go('m',+this.value)">${S.m.map((_,i)=>`<option value=${i} ${i==k?'selected':''}>${MN[i%12]} ${Y0+Math.floor(i/12)}</option>`).join('')}</select><button class=pri style="margin:0" onclick="go('m',${Math.min(S.m.length-1,k+1)})">›</button></div>
+<div class=card><h3>Forecast</h3><div class=k><div><small>Start</small><b>${fm(r.st)}</b></div><div><small>Einnahmen</small><b id=kei>${fm(r.ei)}</b></div><div><small>Ausgaben</small><b id=kau>${fm(r.au)}</b></div><div style="grid-column:1/-1"><small>Rest (Ende)</small><span class=gp><b id=kre class="${cl(r.rest)}">${fm(r.rest)}</b><small id=kgp>${gpt(k)}</small></span></div></div>
+<div class=r2 style="margin-top:8px"><span class=mu>Start manuell (leer = Übertrag ${fm(r.uc)})</span><input type=number placeholder="${r.uc}" value="${m.s??''}" onchange="ss(${k},this.value)"></div></div>
+<div class=card><h3>Einnahmen</h3>${rbrow(k)}${ls('i',k,m.i)}</div><div class=card><h3>Ausgaben <small class=mu>(✓ = bezahlt)</small></h3>${lx(k,m.e)}</div>`}
+function vP(){const k=S.cur,r=calc()[k];return `<div class=ys><div class=nav2><button class=pri style="margin:0" onclick="go('p',${Math.max(0,k-1)})">‹</button><select onchange="go('p',+this.value)">${S.m.map((_,i)=>`<option value=${i} ${i==k?'selected':''}>${MN[i%12]} ${Y0+Math.floor(i/12)}</option>`).join('')}</select><button class=pri style="margin:0" onclick="go('p',${Math.min(S.m.length-1,k+1)})">›</button></div></div><div class=card><h3>Konto</h3><p class=mu style="margin:0 0 6px;font-size:13px">Eine Änderung gilt als Basis für alle Folgemonate.</p>`+ac(k,0,4)+`<div class=sum><span>Sparer gesamt</span><b>${fm(r.sp)}</b></div></div><div class=card><h3>Börse</h3><p class=mu style="margin:0 0 6px;font-size:13px">Eine Änderung gilt als Basis für alle Folgemonate.</p>`+ac(k,4,6)+`<div class=sum><span>Börse gesamt</span><b>${fm(r.bo)}</b></div></div><div class=card><div class=sum><span>Alles zusammen</span><b>${fm(r.sp+r.bo)}</b></div></div>`}
+function bl(p,q,l){return l.map((x,j)=>`<div class=r style="grid-template-columns:1fr 96px"><input value="${es(x[0])}" onchange="eb('${p}','${q}',${j},0,this.value)"><input type=number step=any value="${x[1]}" onchange="eb('${p}','${q}',${j},1,this.value)"></div>`).join('')}
+function vB(){let h='<p class=mu>Monatsebene 2026: tatsächliche Einnahmen, Fixkosten, variable Kosten und Sparer. Das Ergebnis ist die erwartete Einnahme pro Monat.</p>';
+for(const p of['M','S']){const b=S.base[p],z=bs(p);h+=`<div class=card><h3>${b.n}</h3>`+[['g','Einnahmen',z.g],['f','Fixkosten',z.f],['v','Variable Kosten',z.v],['s','Sparer',z.s]].map(([q,l,x])=>`<details><summary><span>${l}</span><b>${fm(x)}</b></summary>${bl(p,q,b[q])}</details>`).join('')+`<div class=sum><span>Gehalt − Fix − Variabel</span><b>${fm(z.ue)}</b></div><div class=sum><span>Erwartet pro Monat (nach Sparer)</span><b class=ok>${fm(z.mu)}</b></div></div>`}
+return h+`<div class=card><h3>Rufbereitschaft</h3><p class=mu style="margin:0 0 6px;font-size:13px">Im Reiter Monat per Haken aktivieren. Änderungen hier gelten für alle Monate nach dem aktuellen Kalendermonat.</p><div class=r2><span>Manuel Grundeinnahme (ohne RB)</span><input type=number value="${S.rb.g}" onchange="srb('g',this.value)"></div><div class=r2><span>Rufbereitschaft netto</span><input type=number value="${S.rb.a}" onchange="srb('a',this.value)"></div></div><div class=card><h3>Monatliche Erhöhung (Sparplan)</h3><p class=mu style="margin:0 0 6px;font-size:13px">Gilt ab dem gewählten Monat für alle Folgemonate. Aktien und XRP bleiben bei 0 statisch.</p>`+AC.map((n,i)=>`<div class=r2><span>${n}</span><input type=number value="${S.inc[i]}" onchange="si(${i},this.value)"></div>`).join('')+`</div><button class=pri onclick="vs()">Erwartete Einnahmen ab Dezember 2026 übernehmen</button>`}
+function vJ(){const ra=calc(),y=YR();return ysel()+`<div style='display:flex;align-items:center;gap:10px;margin:4px 2px 0'><p class=mu style='margin:0;font-size:13px;flex:1'>${JE?'Positionen hier direkt ändern, × löscht, + fügt hinzu.':'Tippe auf einen Monatsnamen, um ihn im Reiter Monat zu öffnen.'}</p></div><button class="fab${JE?' on':''}" onclick="tje()">${JE?'✓ Fertig':'✎ Bearbeiten'}</button><div style='height:70px'></div>`+ra.slice(y*12,y*12+12).map((x,i)=>{const k=y*12+i,m=S.m[k],cur=k==cmo();const ex=m.e.map((e,j)=>JE?`<div class=jr><input type=checkbox style='width:18px;height:18px;flex:none;align-self:center' ${e[3]?'checked':''} onchange="sx(${k},${j},3,this.checked?1:0)"><input class=jn value="${es(e[0])}" onchange="jn('e',${k},${j},0,this.value)"><input class="ja ${e[2]=='g'?'wa':'ok'}" inputmode=decimal value="${e[1]}" onchange="jn('e',${k},${j},1,this.value)"><button class=jx onclick="jk(${k},${j})" title="bekannt / geschätzt"><span class="${e[2]=='g'?'wa':'ok'}">●</span></button><button class=jx onclick="rm('e',${k},${j})">×</button></div>`:`<div class="jr${e[3]?' pd':''}"><span>${es(e[0])}</span><b class="${e[2]=='g'?'wa':'ok'}">${fm(e[1])}</b></div>`).join('');const ix=m.i.map((e,j)=>JE?`<div class=jr><input class=jn value="${es(e[0])}" onchange="jn('i',${k},${j},0,this.value)"><input class=ja inputmode=decimal value="${e[1]}" onchange="jn('i',${k},${j},1,this.value)"><button class=jx onclick="rm('i',${k},${j})">×</button></div>`:`<div class=jr><span>${es(e[0])}</span><b>${fm(e[1])}</b></div>`).join('');return `<div class="card jm${cur?' cur':''}"><div class=jh onclick="go('m',${k})"><span>${MN[i]}</span></div>${cur?giroBlk():''}<div class=jg><div>${ex||(JE?'':'<div class="jr mu">–</div>')}${JE?`<button class=jx style='width:100%;text-align:left;padding:5px 0' onclick="ad('e',${k})">+ Ausgabe</button>`:''}</div><div><div class="jr jy"><span>Start ${MN[i]}</span><b id=jst${i}>${fm(x.st)}</b></div>${ix}${JE?`<button class=jx style='width:100%;text-align:left;padding:5px 0' onclick="ad('i',${k})">+ Einnahme</button>`:''}</div></div><div class=jg style='margin-top:10px'><div class="jt jtr" id=jau${i}>${fm(x.au)}</div><div class="jt jtt" id=jei${i}>${fm(x.st+x.ei)}</div></div><div class=jh style='margin:10px 0 0;justify-content:flex-end'>${cur?`<small class=mu>Bleibt übrig</small><b id=jbu class="${bcl(bue(k))}" style='font-size:14px;margin-right:14px'>${fm(bue(k))}</b>`:''}<small class=mu>Rest Ende</small><b id=jre${i} class="${cl(x.rest)}" style='font-size:17px'>${fm(x.rest)}</b></div></div>`}).join('')}
+function heute(){const k=Math.max(0,Math.min(S.m.length-1,cmo()));S.cur=k;S.yr=Math.floor(k/12);sl();R();scrollTo(0,0);if(S.tab=='j')setTimeout(()=>{const e=document.querySelector('.jm.cur');if(e)e.scrollIntoView({block:'start'})},30)}
+var SQ='';
+const nrm2=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+function srch(){const q=nrm2(SQ).trim();if(!q)return `<p class=mu style='margin:8px 2px'>Suchbegriff eingeben, z. B. „iPhone“. Es werden alle Monate von 2023 bis 2027 durchsucht.</p>`;const H=[];S.m.forEach((m,k)=>{m.e.forEach(x=>{if(nrm2(x[0]).includes(q))H.push([k,x[0],-x[1],x[3]?'bezahlt':x[2]=='g'?'geschätzt':'bekannt'])});m.i.forEach(x=>{if(nrm2(x[0]).includes(q))H.push([k,x[0],+x[1],'Einnahme'])})});Object.keys(S.ac||{}).forEach(key=>{const p=key.split('-').map(Number);if(nrm2(S.ac[key]).includes(q)&&S.a[p[0]])H.push([p[0],AC[p[1]]+': '+S.ac[key],null,'Kommentar'])});if(!H.length)return `<p class=mu style='margin:8px 2px'>Keine Treffer.</p>`;H.sort((a,b)=>a[0]-b[0]);let au=0,ei=0;H.forEach(h=>{if(h[2]<0)au-=h[2];else if(h[2]>0)ei+=h[2]});return `<div class=card style='margin-top:6px'><div class=mu style='font-size:13px;margin-bottom:6px'>${H.length} Treffer · Ausgaben ${fm(au)}${ei?' · Einnahmen '+fm(ei):''}</div>`+H.map(h=>`<div class=jr style='cursor:pointer;font-size:14px;align-items:baseline' onclick="go('m',${h[0]})"><span><b>${mlab(h[0])}</b> · ${es(h[1])} <small class=mu>${h[3]}</small></span>${h[2]==null?'':`<b class="${h[2]<0?cl(-1):'ok'}">${fm(Math.abs(h[2]))}</b>`}</div>`).join('')+`</div>`}
+function sq(v){SQ=v;const e=document.getElementById('sr');if(e)e.innerHTML=srch()}
+function vS(){return `<div class=ys><input id=sqi type=search placeholder="Suchen, z. B. iPhone" value="${es(SQ)}" oninput="sq(this.value)" autocomplete=off autocapitalize=off></div><div id=sr>${srch()}</div>`}
+var RJ=null;
+function anch(){const n=document.getElementById('n'),lim=(n?n.getBoundingClientRect().bottom:0)+50,c=[...document.querySelectorAll('.jm')];for(let i=0;i<c.length;i++){const r=c[i].getBoundingClientRect();if(r.bottom>lim)return{i:i,t:r.top}}return null}
+function R(){const a=(S.tab=='j'&&RJ===YR())?anch():null;R0();RJ=S.tab=='j'?YR():null;if(a){const e=document.querySelectorAll('.jm')[a.i];if(e)scrollBy(0,e.getBoundingClientRect().top-a.t)}}
+function nh(){const n=$('#n');if(n)document.documentElement.style.setProperty('--nh',n.offsetHeight+'px')}
+function R0(){const t=S.tab;setTimeout(nh,0);$('#v').innerHTML=t=='u'?vU():t=='m'?vM():t=='j'?vJ():t=='s'?vS():t=='p'?vP():vB();$('#n').innerHTML=[['m','Monat'],['j','Jahr'],['u','Übersicht'],['p','Sparer'],['b','Basis'],['s','<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:block;margin:auto"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>'],['t','<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:block;margin:auto"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15" r="1.6" fill="currentColor" stroke="none"/></svg>']].map(([i,l])=>`<button class="${i==t?'on':''}" aria-label="${i=='s'?'Suche':i=='t'?'Heute':''}" style="${i=='s'||i=='t'?'flex:none;width:40px;padding:11px 0':''}" onclick="${i=='t'?'heute()':`go('${i}')`}">${l}</button>`).join('')}
+function go(t,k){S.tab=t;if(k!=null)S.cur=k;if(k==null&&(t=='j'||t=='u'))S.yr=Math.floor(S.cur/12);sl();R();scrollTo(0,0);if(t=='s')setTimeout(()=>{const e=document.getElementById('sqi');if(e)e.focus()},50);if(t=='j'){const e=document.querySelector('.jm.cur');if(e)e.scrollIntoView()}}
+function tje(){JE=!JE;R()}
+function jk(k,j){const e=S.m[k].e[j];e[2]=e[2]=='g'?'b':'g';sv();R()}
+function gjl(i,v){S.giro[i]=+String(v).replace(',','.')||0;sv();const g=document.getElementById('jgs');if(g)g.textContent=fm(S.giro[0]+S.giro[1]);jupd()}
+function giroBlk(){return `<div class=mu style='font-size:12px;margin:0 0 4px;display:flex;align-items:center;gap:6px'>Verfügbar zum <input type=date class=gd value="${S.gd||''}" onchange="S.gd=this.value;sv()"></div><div class=gb><div><small class=mu>Manu</small><input inputmode=decimal value="${S.giro[0]}" oninput="gjl(0,this.value)"></div><div><small class=mu>Sandra</small><input inputmode=decimal value="${S.giro[1]}" oninput="gjl(1,this.value)"></div><div><small class=mu style='text-align:right'>Gesamt</small><b id=jgs>${fm(S.giro[0]+S.giro[1])}</b></div></div>`}
+function jn(t,k,j,i,v){S.m[k][t][j][i]=i?(+String(v).replace(',','.')||0):v;sv();if(i)jupd()}
+function bue(k){let g=S.giro[0]+S.giro[1];S.m[k].e.forEach(x=>{if(!x[3])g-=+x[1]||0});return g}
+function bcl(v){return v>=0?'tq':cl(v)}
+function jupd(){const b=document.getElementById('jbu');if(b){const v=bue(cmo());b.textContent=fm(v);b.className=bcl(v)}const ra=calc(),y=YR();ra.slice(y*12,y*12+12).forEach((x,i)=>{const g=n=>document.getElementById(n+i);if(!g('jau'))return;g('jau').textContent=fm(x.au);g('jei').textContent=fm(x.st+x.ei);g('jst').textContent=fm(x.st);g('jre').textContent=fm(x.rest);g('jre').className=cl(x.rest)})}
+function yb(y){S.yr=y;sl();R();scrollTo(0,0);if(S.tab=='j'){const e=document.querySelector('.jm.cur');if(e)e.scrollIntoView()}}
+function ed(t,k,j,i,v){S.m[k][t][j][i]=i?+v||0:v;sv();R()}
+function lv(t,k,j,v){S.m[k][t][j][1]=+v||0;const r=calc()[k];$('#kre').textContent=fm(r.rest);$('#kre').className=cl(r.rest);$('#kei').textContent=fm(r.ei);$('#kau').textContent=fm(r.au);$('#gko').innerHTML=gkh(k);$('#kgp').textContent=gpt(k);sv()}
+function rm(t,k,j){S.m[k][t].splice(j,1);sv();R()}
+function ad(t,k){if(t=='e'){const e=S.m[k].e;e.splice(e.filter(y=>!y[3]).length,0,["Neuer Eintrag",0,'b',0])}else S.m[k][t].push(["Neuer Eintrag",0]);sv();R()}
+function sx(k,j,i,v){const e=S.m[k].e;e[j][i]=v;if(i==3){const x=e.splice(j,1)[0];if(v)e.push(x);else e.splice(e.filter(y=>!y[3]).length,0,x)}sv();R()}
+function ss(k,v){S.m[k].s=v===''?null:+v;sv();R()}
+function pr(k,i){for(let j=k+1;j<S.a.length;j++)S.a[j][i]=S.a[j-1][i]+S.inc[i]}
+function sa(k,i,v){S.a[k][i]=+v||0;pr(k,i);sv();R()}
+function si(i,v){S.inc[i]=+v||0;pr(S.cur,i);sv();R()}
+function gi(i,v){S.giro[i]=+v||0;sv();R()}
+function eb(p,q,j,i,v){S.base[p][q][j][i]=i?+v||0:v;sv();R()}
+function rbt(k,v){const i=S.m[k].i,j=i.findIndex(x=>x[2]=='r');if(j>=0)i.splice(j,1);if(v)i.push(['Rufbereitschaft',S.rb.a,'r']);sv();R()}
+function srb(f,v){S.rb[f]=+v||0;const cm=cmo();S.m.forEach((m,k)=>{if(k<=cm)return;if(f=='g'){const e=m.i.find(x=>x[0]=='Manuel'&&x[2]!='r');if(e)e[1]=S.rb.g;else m.i.unshift(['Manuel',S.rb.g])}else m.i.forEach(x=>{if(x[2]=='r')x[1]=S.rb.a})});sv();R()}
+function vs(){const xm=Math.floor(bs('M').mu/50+1e-9)*50,xs=Math.floor(bs('S').mu/50+1e-9)*50;S.rb.g=xm;S.m.forEach((m,k)=>{if(k<(2026-Y0)*12+11)return;[['Sandra',xs],['Manuel',xm]].forEach(([n,x])=>{const e=m.i.find(y=>y[0].trim()==n&&y[2]!='r');if(e)e[1]=x;else m.i.unshift([n,x])})});sv();go('u');stt('Übernommen ab Dezember 2026: Manuel '+fm(xm)+', Sandra '+fm(xs),'ok')}
+function ex(){const j=JSON.stringify({giro:S.giro,inc:S.inc,a:S.a,m:S.m});let t=$('#xp');if(!t){t=document.createElement('textarea');t.id='xp';t.style.cssText='width:100%;height:120px';$('main').appendChild(t)}t.value=j;t.select();try{navigator.clipboard.writeText(j)}catch(e){}try{document.execCommand('copy')}catch(e){}alert('Daten kopiert. Falls nicht: Text im Feld unten markieren und kopieren.')}
+function rs(){if(confirm('Alle Daten auf den Ausgangsstand zurücksetzen? Das gilt dann auf allen Geräten.')){const c=S.cur,t=S.tab,yy=S.yr;S=JSON.parse(JSON.stringify(DEF));S.cur=c;S.tab=t;S.yr=yy;nz();sv();R()}}
+R();
+document.addEventListener('input',e=>{const t=e.target,m=(t.getAttribute('onchange')||'').match(/^gi\((\d),/);if(m&&$('#gko')){S.giro[+m[1]]=+t.value||0;sv();$('#ggs').textContent=fm(S.giro[0]+S.giro[1]);$('#gko').innerHTML=gkh(S.cur);$('#kgp').textContent=gpt(S.cur)}});
+const nrm=s=>String(s).replace(/[€\s ]/g,'').replace(',','.');
+const unf=s=>String(s).replace(/[€\s ]/g,'').replace(/\./g,'').replace(',','.');
+function enh(){document.querySelectorAll('input[type=number],input.ja,.gb input:not([type=date])').forEach(t=>{if(t.dataset.n)return;t.dataset.n='1';if(t.type=='number')t.type='text';t.inputMode='decimal';if(t.value!==''&&isFinite(+nrm(t.value)))t.value=fm(+nrm(t.value))})}
+new MutationObserver(enh).observe(document.body,{childList:true,subtree:true});enh();
+document.addEventListener('input',e=>{const t=e.target;if(t.dataset&&t.dataset.n&&/[,€\s]/.test(t.value))t.value=nrm(t.value)},true);
+document.addEventListener('change',e=>{const t=e.target;if(t.dataset&&t.dataset.n)t.value=nrm(t.value)},true);
+document.addEventListener('focusin',e=>{const t=e.target;if(t.dataset&&t.dataset.n&&!t.dataset.e){t.dataset.e='1';t.value=unf(t.value);setTimeout(()=>{try{t.select()}catch(x){}},0)}});
+document.addEventListener('focusout',e=>{const t=e.target;if(t.dataset&&t.dataset.n&&t.dataset.e){delete t.dataset.e;const v=nrm(t.value);t.value=v===''?'':fm(isFinite(+v)?+v:0)}});
+const CID=Math.random().toString(36).slice(2);
+let DB=null,REF=null,pt=null,busy=false,again=false,pend=null,conf=null,seen=0;
+const hm=()=>new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+function stt(t,c){const e=$('#st');if(e){e.textContent=t;e.className=c||'mu'}}
+function dirty(v){DY=!!v;try{localStorage.setItem('fin26d',v?'1':'0')}catch(e){}}
+function pack(){const o=Object.assign({},S);delete o.cur;delete o.tab;delete o.yr;return JSON.stringify(o)}
+function sumry(st){let c=0,n=0;st.m.forEach(m=>{const s0=m.s!=null&&m.s!==''?+m.s:c;c=s0+sm(m.i)-sm(m.e);n+=m.i.length+m.e.length});return n+' Einträge · Ende Dezember '+(Y0-1+Math.round(st.m.length/12))+': '+fm(c)}
+function banner(){const b=$('#bn');if(!conf){b.innerHTML='';return}let a='',l='';try{a=sumry(JSON.parse(conf.json))}catch(e){}try{l=sumry(S)}catch(e){}b.innerHTML=`<div class=card><b>Zwei verschiedene Stände</b><p class=mu style='margin:6px 0'>Auf diesem Gerät liegen Änderungen, die online noch nicht gespeichert sind.</p><p style='margin:6px 0'>Online (${new Date(conf.ts).toLocaleString('de-DE')}): ${a}<br>Dieses Gerät: ${l}</p><button class=pri onclick=cf(1)>Stand von diesem Gerät hochladen</button><button class=add onclick=cf(0)>Online-Stand übernehmen</button></div>`}
+function cf(up){const d=conf;conf=null;banner();if(up){seen=d.ts;sched()}else applyRemote(d)}
+let BASE=null,pendR=false;try{BASE=localStorage.getItem('fin26b')}catch(e){}
+function sb(j){BASE=j;try{localStorage.setItem('fin26b',j)}catch(e){}}
+const eq=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+function u3(b,l,r){return eq(l,b)?r:eq(r,b)?l:l}
+function mg(bj,lj,rj){const b=JSON.parse(bj),l=JSON.parse(lj),r=JSON.parse(rj),o={};
+new Set([...Object.keys(l),...Object.keys(r)]).forEach(k=>{const B=b[k],L=l[k],Rm=r[k];
+if(Array.isArray(L)&&Array.isArray(Rm)&&(k=='m'||k=='a')){const n=Math.max(L.length,Rm.length),x=[];for(let i=0;i<n;i++)x.push(i>=L.length?Rm[i]:i>=Rm.length?L[i]:u3(B&&B[i],L[i],Rm[i]));o[k]=x}
+else if(k=='ac'&&L&&Rm){const c={};new Set([...Object.keys(L),...Object.keys(Rm)]).forEach(q=>{const v=u3(B&&B[q],L[q],Rm[q]);if(v!==undefined)c[q]=v});o[k]=c}
+else o[k]=u3(B,L,Rm)});return o}
+function adopt(n){const c=S.cur,t=S.tab,yy=S.yr;S=n;S.cur=c;S.tab=t;S.yr=yy;if(!S.inc)S.inc=[100,150,0,650,0,0];nz();sl()}
+function typing(){const a=document.activeElement;return a&&/^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName)}
+function softR(){if(typing())pendR=true;else R()}
+function sched(){if(conf){stt('Bitte oben entscheiden – Änderungen bleiben vorerst lokal','wa');return}if(!REF){stt('Nur lokal gespeichert','wa');return}stt('Speichere …');clearTimeout(pt);pt=setTimeout(push,800)}
+async function push(){pt=null;if(!REF||conf)return;if(busy){again=true;return}busy=true;let touched=false;
+try{const snap=await REF.get();
+if(snap.exists){const d=snap.data();if(d&&d.json&&d.ts!==seen){if(!BASE){if(d.json!==pack()){conf=d;banner();stt('Zwei Stände – bitte oben entscheiden','wa');busy=false;return}}else{adopt(mg(mj(BASE),pack(),mj(d.json)));sb(d.json);touched=true}}}
+const ts=Date.now(),js=pack();seen=ts;await REF.set({json:js,ts:ts,by:CID});sb(js);
+if(pack()===js)dirty(0);else again=true;stt('Synchronisiert '+hm(),'ok');if(touched)softR()}
+catch(e){if(e&&e.auth){stt('Bitte anmelden – Änderungen sind lokal gesichert','wa')}else{stt('Online speichern fehlgeschlagen – lokal gesichert, neuer Versuch …','no');setTimeout(()=>{if(DY&&!pt)sched()},e&&e.cf?400:8000)}}
+busy=false;if(again){again=false;sched()}}
+function applyRemote(d){if(typing()){pend=d;return}let n;try{n=JSON.parse(d.json)}catch(e){return}pend=null;adopt(n);seen=d.ts;sb(d.json);dirty(0);R();stt('Aktualisiert '+hm(),'ok');if(MIG){MIG=false;sv()}}
+function mergeIn(d){if(!BASE){if(d.json===pack()){seen=d.ts;sb(d.json);dirty(0);return}conf=d;banner();stt('Zwei Stände – bitte oben entscheiden','wa');return}
+let m;try{m=mg(mj(BASE),pack(),mj(d.json))}catch(e){conf=d;banner();return}adopt(m);seen=d.ts;sb(d.json);dirty(1);softR();sched()}
+function onRemote(snap){if(snap.metadata&&snap.metadata.hasPendingWrites)return;if(!snap.exists){push();return}const d=snap.data();if(!d||!d.json||d.ts===seen)return;if(busy)return;if(DY||pt){mergeIn(d);return}applyRemote(d)}
+document.addEventListener('focusout',()=>{if(pend||pendR)setTimeout(()=>{if(typing())return;if(pendR){pendR=false;R()}if(pend){const d=pend;pend=null;onRemote({exists:true,data:()=>d})}},350)});
+const SB='https://yiqefxhtotufscnuymml.supabase.co',KEY='sb_publishable_SWyghh2iTvbfoXkoPnlzMg__ovk-XGI';
+let sess=null;try{sess=JSON.parse(localStorage.getItem('fin26s'))}catch(e){}
+function sSess(r){sess={a:r.access_token,r:r.refresh_token,e:Date.now()+(r.expires_in||3600)*1000};try{localStorage.setItem('fin26s',JSON.stringify(sess))}catch(e){}}
+function noSess(){sess=null;try{localStorage.removeItem('fin26s')}catch(e){}showLg()}
+function showLg(m){const l=$('#lg');l.hidden=false;l.style.display='flex';$('#lm').textContent=m||'';stt('Bitte anmelden','wa')}
+function hideLg(){const l=$('#lg');l.hidden=true;l.style.display='none'}
+async function auth(path,body,method){const r=await fetch(SB+'/auth/v1/'+path,{method:method||'POST',headers:{apikey:KEY,'Content-Type':'application/json',Authorization:'Bearer '+(method=='PUT'&&sess?sess.a:KEY)},body:JSON.stringify(body)});const j=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error(j.msg||j.error_description||j.message||r.status),{st:r.status});return j}
+async function refresh(){if(!sess)throw{auth:1};try{sSess(await auth('token?grant_type=refresh_token',{refresh_token:sess.r}))}catch(e){if(e.st===400||e.st===401||e.st===403){noSess();throw{auth:1}}throw e}}
+async function api(p,o){o=o||{};if(!sess)throw{auth:1};if(Date.now()>sess.e-60000)await refresh();
+for(let t=0;t<2;t++){const r=await fetch(SB+'/rest/v1/'+p,Object.assign({},o,{headers:Object.assign({apikey:KEY,Authorization:'Bearer '+sess.a,'Content-Type':'application/json'},o.headers||{})}));
+if(r.status===401&&t==0){await refresh();continue}if(r.status===401){noSess();throw{auth:1}}return r}}
+let rts=null;
+const REFX={async get(){const r=await api('fin_state?id=eq.main&select=json,ts,by');if(!r.ok)throw new Error('get '+r.status);const a=await r.json();if(!a.length){rts=null;return{exists:false,data:()=>null}}rts=a[0].ts;return{exists:true,data:()=>a[0]}},
+async set(d){if(rts===null){const r=await api('fin_state',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify({id:'main',json:d.json,ts:d.ts,by:d.by})});if(r.status===409)throw{cf:1};if(!r.ok)throw new Error('ins '+r.status);rts=d.ts;return}
+const r=await api('fin_state?id=eq.main&ts=eq.'+rts,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify({json:d.json,ts:d.ts,by:d.by})});if(!r.ok)throw new Error('upd '+r.status);const a=await r.json();if(!a.length)throw{cf:1};rts=d.ts}};
+let started=false;
+function start(){hideLg();REF=REFX;stt('Verbinde …');REF.get().then(onRemote).catch(e=>{if(!(e&&e.auth))stt('Offline – lokal gespeichert','wa')});if(started)return;started=true;
+document.addEventListener('visibilitychange',()=>{if(!REF||!sess)return;if(document.hidden){if(pt||DY){clearTimeout(pt);push()}}else REF.get().then(onRemote).catch(()=>{})});addEventListener('pagehide',()=>{if(REF&&sess&&(pt||DY)){clearTimeout(pt);push()}});addEventListener('online',()=>{if(REF&&sess)REF.get().then(onRemote).catch(()=>{})});setInterval(()=>{if(!document.hidden&&REF&&sess&&!busy&&!typing())REF.get().then(onRemote).catch(()=>{})},15000)}
+$('#lf').addEventListener('submit',async e=>{e.preventDefault();$('#lm').textContent='Anmelden …';try{sSess(await auth('token?grant_type=password',{email:$('#le').value.trim(),password:$('#lp').value}));$('#lp').value='';start()}catch(x){$('#lm').textContent=x.st==400?'E-Mail oder Passwort falsch':'Anmeldung nicht möglich: '+(x.message||'offline')}});
+$('#lo').addEventListener('click',e=>{e.preventDefault();if(DY&&!confirm('Es gibt noch nicht synchronisierte Änderungen. Trotzdem abmelden?'))return;REF=null;noSess()});
+$('#pw').addEventListener('click',async e=>{e.preventDefault();const p=prompt('Neues Passwort (mindestens 8 Zeichen):');if(!p)return;try{await refresh();await auth('user',{password:p},'PUT');alert('Passwort geändert.')}catch(x){alert('Nicht geändert: '+(x.message||'Fehler'))}});
+if(sess)start();else showLg();
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+</script></body></html>
+
+</body></html>
