@@ -137,6 +137,7 @@ if(S.rb.s===undefined){const c={};S.m.forEach((m,k)=>{if(k>cm){const e=ie(m,'San
 const old={Manuel:S.rb.g,Sandra:S.rb.s};let n=0;
 S.m.forEach((m,k)=>{if(k<=cm)return;['Sandra','Manuel'].forEach(nm=>{const e=ie(m,nm);if(!e){if(add){m.i.unshift([nm,tg[nm]]);n++}}else if(e[1]===old[nm]&&e[1]!==tg[nm]){e[1]=tg[nm];n++}})});
 S.rb.g=tg.Manuel;S.rb.s=tg.Sandra;return{tg:tg,n:n}}
+function autoE(){if(!S.base||!S.base.M||sm(S.base.M.g)<=0||sm(S.base.S.g)<=0)return false;const m=ce(bs('M').mu),sa=ce(bs('S').mu);if(S.rb.g===m&&S.rb.s===sa)return false;const r=apE(false);return true}
 function srb(f,v){v=+v||0;if(f=='a'){S.rb.a=v;S.m.forEach((m,k)=>{if(k>cmo())m.i.forEach(x=>{if(x[2]=='r')x[1]=v})})}else{const tg={Manuel:S.rb.g,Sandra:S.rb.s===undefined?S.rb.g:S.rb.s};if(f=='g'){tg.Manuel=v;if(S.rb.s===undefined)S.rb.s=tg.Sandra}else tg.Sandra=v;apE(false,tg)}sv();R()}
 function vs(){const r=apE(true);sv();go('u');stt('Übernommen ab '+MN[(cmo()+1)%12]+': Manuel '+fm(r.tg.Manuel)+', Sandra '+fm(r.tg.Sandra)+' ('+r.n+' Monate angepasst, eigene Änderungen bleiben)','ok')}
 function ex(){const j=JSON.stringify({giro:S.giro,inc:S.inc,a:S.a,m:S.m});let t=$('#xp');if(!t){t=document.createElement('textarea');t.id='xp';t.style.cssText='width:100%;height:120px';$('main').appendChild(t)}t.value=j;t.select();try{navigator.clipboard.writeText(j)}catch(e){}try{document.execCommand('copy')}catch(e){}alert('Daten kopiert. Falls nicht: Text im Feld unten markieren und kopieren.')}
@@ -169,7 +170,7 @@ new Set([...Object.keys(l),...Object.keys(r)]).forEach(k=>{const B=b[k],L=l[k],R
 if(Array.isArray(L)&&Array.isArray(Rm)&&(k=='m'||k=='a')){const n=Math.max(L.length,Rm.length),x=[];for(let i=0;i<n;i++)x.push(i>=L.length?Rm[i]:i>=Rm.length?L[i]:u3(B&&B[i],L[i],Rm[i]));o[k]=x}
 else if(k=='ac'&&L&&Rm){const c={};new Set([...Object.keys(L),...Object.keys(Rm)]).forEach(q=>{const v=u3(B&&B[q],L[q],Rm[q]);if(v!==undefined)c[q]=v});o[k]=c}
 else o[k]=u3(B,L,Rm)});return o}
-function adopt(n){const c=S.cur,t=S.tab,yy=S.yr;S=n;S.cur=c;S.tab=t;S.yr=yy;if(!S.inc)S.inc=[100,150,0,650,0,0];nz();sl()}
+function adopt(n){const c=S.cur,t=S.tab,yy=S.yr;S=n;S.cur=c;S.tab=t;S.yr=yy;if(!S.inc)S.inc=[100,150,0,650,0,0];nz();if(autoE())MIG=true;sl()}
 function typing(){const a=document.activeElement;return a&&/^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName)}
 function softR(){if(typing())pendR=true;else R()}
 function sched(){if(conf){stt('Bitte oben entscheiden – Änderungen bleiben vorerst lokal','wa');return}if(!REF){stt('Nur lokal gespeichert','wa');return}stt('Speichere …');clearTimeout(pt);pt=setTimeout(push,800)}
@@ -201,7 +202,7 @@ const REFX={async get(){const r=await api('fin_state?id=eq.main&select=json,ts,b
 async set(d){if(rts===null){const r=await api('fin_state',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify({id:'main',json:d.json,ts:d.ts,by:d.by})});if(r.status===409)throw{cf:1};if(!r.ok)throw new Error('ins '+r.status);rts=d.ts;return}
 const r=await api('fin_state?id=eq.main&ts=eq.'+rts,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify({json:d.json,ts:d.ts,by:d.by})});if(!r.ok)throw new Error('upd '+r.status);const a=await r.json();if(!a.length)throw{cf:1};rts=d.ts}};
 let started=false;
-function start(){hideLg();REF=REFX;stt('Verbinde …');REF.get().then(onRemote).catch(e=>{if(!(e&&e.auth))stt('Offline – lokal gespeichert','wa')});if(started)return;started=true;
+function start(){hideLg();REF=REFX;stt('Verbinde …');REF.get().then(onRemote).then(()=>{if(!conf&&!typing()&&autoE()){sv();R()}}).catch(e=>{if(!(e&&e.auth))stt('Offline – lokal gespeichert','wa')});if(started)return;started=true;
 document.addEventListener('visibilitychange',()=>{if(!REF||!sess)return;if(document.hidden){if(pt||DY){clearTimeout(pt);push()}}else REF.get().then(onRemote).catch(()=>{})});addEventListener('pagehide',()=>{if(REF&&sess&&(pt||DY)){clearTimeout(pt);push()}});addEventListener('online',()=>{if(REF&&sess)REF.get().then(onRemote).catch(()=>{})});setInterval(()=>{if(!document.hidden&&REF&&sess&&!busy&&!typing())REF.get().then(onRemote).catch(()=>{})},15000)}
 $('#lf').addEventListener('submit',async e=>{e.preventDefault();$('#lm').textContent='Anmelden …';try{sSess(await auth('token?grant_type=password',{email:$('#le').value.trim(),password:$('#lp').value}));$('#lp').value='';start()}catch(x){$('#lm').textContent=x.st==400?'E-Mail oder Passwort falsch':'Anmeldung nicht möglich: '+(x.message||'offline')}});
 $('#lo').addEventListener('click',e=>{e.preventDefault();if(DY&&!confirm('Es gibt noch nicht synchronisierte Änderungen. Trotzdem abmelden?'))return;REF=null;noSess()});
